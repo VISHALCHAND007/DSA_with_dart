@@ -76,5 +76,24 @@ void main() {
     }
     return maxLength;
   }
-  print(maxSubString("tmmzuxt"));
+  // print(maxSubString("tmmzuxt"));
+
+  /*
+  Given an integer array nums sorted in non-decreasing order, remove duplicates in-place such that each unique element appears only once.
+
+  Return the number of unique elements k.
+
+  Constraints:
+
+  Do not use extra space
+
+  Modify array in-place
+
+  Order must be maintained
+   */
+  /*
+  Solution::
+  Approach=> For this particular problem we require the two pointer approach:
+  One pointer to scan the elements and other one to store the index of the
+   */
 }
