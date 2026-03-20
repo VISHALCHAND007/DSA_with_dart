@@ -46,26 +46,35 @@ void main() {
   /*
   Approach:
   To solve this we will use two pointer approach:
-  We need two variable to store the first two indexes & a variable to store the max substring frequency.
-  => Iterate the given string.
-  => For each iteration check if the alphabet at ind1 and ind2 are same or not is they are not same increate a local counter
-   variable by 1 till the duplicate is found.
-   => Update the ind2 at each step.
-   => If a duplicate is found then update the max with that local variable if its greater than max.
-   => Update the ind1 by 1.
-  => Return the max value when the loop finishes.
+  Initially left = 0, maxLength = 0 and a set for storing each alphabet.
+  => Iterate the the substring with variable named right: 0 -> n (length of the substring)
+  => use a while loop for the removal of duplicates from the left side and increment the left by 1 for each step the condition for while loop will be:
+    - till set contains the element s[right] => remove the element s[left] from the set.
+  => add element to set set.add(s[right]).
+  => maxLength will be:
+    - the max of (r-+1) and maxLength
+
 
   Time complexity: O(n) since it takes since iteration.
-  Space complexity: O(1)
+  Space complexity: O(K)
    */
 
   int maxSubString(String s) {
-    int maxFreq = 0;
-    int ind1 = 0;
+    var alphaSet = Set<String>();
+    var left = 0, maxLength = 0;
 
-    for(var i = 0; i < s.length; i++) {
-
+    for(var right = 0; right < s.length; right++) {
+      //removing the duplicates from the left side
+      while(alphaSet.contains(s[right])) {
+        alphaSet.remove(s[left]);
+        left++;
+      }
+      //adding the element to set of right index
+      alphaSet.add(s[right]);
+      //setting maxLength
+      maxLength = (right - left + 1) > maxLength ? right - left + 1  : maxLength;
     }
-    return maxFreq;
+    return maxLength;
   }
+  print(maxSubString("tmmzuxt"));
 }
